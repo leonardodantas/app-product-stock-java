@@ -1,4 +1,4 @@
-package com.product.stock.infra.http.requests;
+package com.product.stock.infra.http.jsons.requests;
 
 import java.math.BigDecimal;
 

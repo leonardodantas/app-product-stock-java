@@ -1,4 +1,4 @@
-package com.product.stock.infra.http.response;
+package com.product.stock.infra.http.jsons.response;
 
 import com.product.stock.domain.Product;
 

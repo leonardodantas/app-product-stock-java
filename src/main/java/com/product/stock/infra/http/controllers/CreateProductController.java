@@ -2,8 +2,8 @@ package com.product.stock.infra.http.controllers;
 
 import com.product.stock.app.usecases.CreateProduct;
 import com.product.stock.infra.http.converters.ProductRequestConverter;
-import com.product.stock.infra.http.requests.ProductRequest;
-import com.product.stock.infra.http.response.ProductResponse;
+import com.product.stock.infra.http.jsons.requests.ProductRequest;
+import com.product.stock.infra.http.jsons.response.ProductResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;

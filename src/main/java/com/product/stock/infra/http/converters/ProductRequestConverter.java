@@ -1,7 +1,7 @@
 package com.product.stock.infra.http.converters;
 
 import com.product.stock.domain.Product;
-import com.product.stock.infra.http.requests.ProductRequest;
+import com.product.stock.infra.http.jsons.requests.ProductRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.convert.converter.Converter;
