@@ -10,6 +10,9 @@ public class ProductEntityConverter implements Converter<ProductEntity, Product>
 
     @Override
     public Product convert(final ProductEntity entity) {
-        return null;
+        return Product.builder(entity.id(), entity.name(), entity.price())
+                .id(entity.id())
+                .create(entity.create())
+                .build();
     }
 }

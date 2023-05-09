@@ -10,6 +10,8 @@ public class ProductRequestConverter implements Converter<ProductRequest, Produc
 
     @Override
     public Product convert(final ProductRequest request) {
-        return null;
+        return Product.builder(request.name(), request.description(), request.price())
+                .quantity(request.quantity())
+                .build();
     }
 }

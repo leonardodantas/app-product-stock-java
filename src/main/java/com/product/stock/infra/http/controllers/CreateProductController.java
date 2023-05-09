@@ -1,4 +1,4 @@
-package com.product.stock.infra.http;
+package com.product.stock.infra.http.controllers;
 
 import com.product.stock.app.usecases.CreateProduct;
 import com.product.stock.infra.http.converters.ProductRequestConverter;
