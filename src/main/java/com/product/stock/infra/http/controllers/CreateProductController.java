@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CreateProductController {
 
-    private static Logger logger = LoggerFactory.getLogger(CreateProductController.class);
+    private static final Logger logger = LoggerFactory.getLogger(CreateProductController.class);
 
     private final CreateProduct createProduct;
     private final ProductRequestConverter productRequestConverter;

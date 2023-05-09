@@ -5,6 +5,7 @@ import com.product.stock.domain.Product;
 import com.product.stock.infra.database.converters.ProductEntityConverter;
 import com.product.stock.infra.database.entities.ProductEntity;
 import com.product.stock.infra.database.jpa.ProductRepositoryJPA;
+import com.product.stock.infra.exceptions.SaveEntityException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class ProductRepository implements IProductRepository {
 
-    private static Logger logger = LoggerFactory.getLogger(ProductRepository.class);
+    private static final Logger logger = LoggerFactory.getLogger(ProductRepository.class);
 
     private final ProductRepositoryJPA productRepositoryJPA;
     private final ProductEntityConverter productEntityConverter;
@@ -30,7 +31,7 @@ public class ProductRepository implements IProductRepository {
             return productEntityConverter.convert(productSave);
         } catch (final Exception e) {
             logger.error("Error to execute method save in repository ProductRepository");
-            throw new RuntimeException(e);
+            throw new SaveEntityException(String.format("Error save product %s", product.name()), e);
         }
 
     }

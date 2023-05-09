@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class CreateProduct {
 
-    private static Logger logger = LoggerFactory.getLogger(CreateProduct.class);
+    private static final Logger logger = LoggerFactory.getLogger(CreateProduct.class);
 
     private final IProductRepository productRepository;
 

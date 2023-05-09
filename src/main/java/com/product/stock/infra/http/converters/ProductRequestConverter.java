@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ProductRequestConverter implements Converter<ProductRequest, Product> {
 
-    private static Logger logger = LoggerFactory.getLogger(ProductRequestConverter.class);
+    private static final Logger logger = LoggerFactory.getLogger(ProductRequestConverter.class);
 
     @Override
     public Product convert(final ProductRequest request) {
