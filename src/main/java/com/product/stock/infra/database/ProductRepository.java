@@ -5,10 +5,14 @@ import com.product.stock.domain.Product;
 import com.product.stock.infra.database.converters.ProductEntityConverter;
 import com.product.stock.infra.database.entities.ProductEntity;
 import com.product.stock.infra.database.jpa.ProductRepositoryJPA;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class ProductRepository implements IProductRepository {
+
+    private static Logger logger = LoggerFactory.getLogger(ProductRepository.class);
 
     private final ProductRepositoryJPA productRepositoryJPA;
     private final ProductEntityConverter productEntityConverter;
@@ -20,7 +24,14 @@ public class ProductRepository implements IProductRepository {
 
     @Override
     public Product save(final Product product) {
-        final var productSave = productRepositoryJPA.save(ProductEntity.from(product));
-        return productEntityConverter.convert(productSave);
+        logger.info("Execute method save in the repository ProductRepository");
+        try {
+            final var productSave = productRepositoryJPA.save(ProductEntity.from(product));
+            return productEntityConverter.convert(productSave);
+        } catch (final Exception e) {
+            logger.error("Error to execute method save in repository ProductRepository");
+            throw new RuntimeException(e);
+        }
+
     }
 }
