@@ -1,5 +1,13 @@
 spring:
   application:
+    data:
+      mongodb:
+        authentication-database: admin
+        username: leonardo
+        password: 123456
+        database: rank-list
+        port: 27017
+        host: 127.0.0.1
     swagger:
       title: '@name@'
       description: '@description@'

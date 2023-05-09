@@ -2,6 +2,7 @@ package com.product.stock.infra.database;
 
 import com.product.stock.app.repositories.IProductRepository;
 import com.product.stock.domain.Product;
+import com.product.stock.infra.database.converters.ProductEntityConverter;
 import com.product.stock.infra.database.entities.ProductEntity;
 import com.product.stock.infra.database.jpa.ProductRepositoryJPA;
 import org.springframework.stereotype.Repository;

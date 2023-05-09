@@ -1,0 +1,9 @@
+version: '2'
+services:
+  mongodb:
+    image: mongo:4.2.23
+    ports:
+      - 27017:27017
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=leonardo
+      - MONGO_INITDB_ROOT_PASSWORD=123456
