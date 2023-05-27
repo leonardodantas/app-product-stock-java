@@ -22,4 +22,4 @@ jobs:
       - name: Build and Run Java Script
         run: |
           javac .github/scripts/GitHubActionsExample.java
-          java .github/scripts/GitHubActionsExample
+          java -cp .github/scripts GitHubActionsExample
