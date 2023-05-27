@@ -1,6 +1,6 @@
 package com.product.stock.infra.exceptions;
 
-public class SaveObjectException extends RuntimeException {
+public class SaveObjectException extends RuntimeException implements CustomException {
 
     private final String error;
 
@@ -9,6 +9,7 @@ public class SaveObjectException extends RuntimeException {
         this.error = error;
     }
 
+    @Override
     public String getError() {
         return error;
     }

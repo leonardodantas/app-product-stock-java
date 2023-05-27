@@ -1,4 +1,4 @@
-package com.product.stock.infra.database;
+package com.product.stock.infra.database.repositories;
 
 import com.product.stock.app.repositories.IProductRepository;
 import com.product.stock.domain.Product;
