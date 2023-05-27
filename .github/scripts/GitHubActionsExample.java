@@ -9,8 +9,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
-
-public class GithubActions {
+public class GitHubActionsExample {
 
     public static void main(String[] args) {
         System.out.println("Iniciando analise de dependencias");
