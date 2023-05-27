@@ -1,7 +1,6 @@
 // meu_script.js
 
 const fs = require('fs');
-const { parseString } = require('xml2js');
 
 // Função para ler o arquivo pom.xml
 function readPomXml() {
@@ -9,39 +8,34 @@ function readPomXml() {
   return pomXml;
 }
 
-// Função para extrair as versões do arquivo pom.xml
-function extractVersionsFromPomXml(pomXml) {
-  return new Promise((resolve, reject) => {
-    parseString(pomXml, (err, result) => {
-      if (err) {
-        reject(err);
-      } else {
-        const versions = [];
-        const dependencies = result.project.dependencies[0].dependency;
-        for (const dependency of dependencies) {
-          const groupId = dependency.groupId[0];
-          const artifactId = dependency.artifactId[0];
-          const version = dependency.version[0];
-          versions.push({ groupId, artifactId, version });
-        }
-        resolve(versions);
-      }
-    });
-  });
+// Função para extrair as configurações do JaCoCo do arquivo pom.xml
+function extractJacocoConfigFromPomXml(pomXml) {
+  const pomParser = new DOMParser();
+  const pomDoc = pomParser.parseFromString(pomXml, 'application/xml');
+
+  const jacocoPlugin = pomDoc.querySelector('plugin[artifactId="jacoco-maven-plugin"]');
+
+  if (!jacocoPlugin) {
+    return null;
+  }
+
+  const jacocoConfig = jacocoPlugin.querySelector('configuration');
+  return jacocoConfig;
 }
 
-console.log('Iniciando o script para verificar as versões do pom.xml...');
+console.log('Iniciando o script para verificar as configurações do JaCoCo no pom.xml...');
 
 // Lê o arquivo pom.xml
 const pomXml = readPomXml();
 
-// Extrai as versões do arquivo pom.xml
-extractVersionsFromPomXml(pomXml)
-  .then((versions) => {
-    console.log('Versões encontradas:');
-    console.log(versions);
-    console.log('Script concluído.');
-  })
-  .catch((error) => {
-    console.error('Ocorreu um erro ao ler o pom.xml:', error);
-  });
+// Extrai as configurações do JaCoCo do arquivo pom.xml
+const jacocoConfig = extractJacocoConfigFromPomXml(pomXml);
+
+if (jacocoConfig) {
+  console.log('Configurações do JaCoCo encontradas:');
+  console.log(jacocoConfig);
+} else {
+  console.log('Configurações do JaCoCo não encontradas no pom.xml.');
+}
+
+console.log('Script concluído.');
