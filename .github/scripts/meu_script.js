@@ -1,6 +1,7 @@
 // meu_script.js
 
 const fs = require('fs');
+const xmlParser = require('xml-js');
 
 // Função para ler o arquivo pom.xml
 function readPomXml() {
@@ -10,16 +11,16 @@ function readPomXml() {
 
 // Função para extrair as configurações do JaCoCo do arquivo pom.xml
 function extractJacocoConfigFromPomXml(pomXml) {
-  const pomParser = new DOMParser();
-  const pomDoc = pomParser.parseFromString(pomXml, 'application/xml');
+  const pomJson = xmlParser.xml2js(pomXml, { compact: true });
 
-  const jacocoPlugin = pomDoc.querySelector('plugin[artifactId="jacoco-maven-plugin"]');
+  const plugins = pomJson.project.build.plugins.plugin;
+  const jacocoPlugin = plugins.find(plugin => plugin.artifactId._text === 'jacoco-maven-plugin');
 
   if (!jacocoPlugin) {
     return null;
   }
 
-  const jacocoConfig = jacocoPlugin.querySelector('configuration');
+  const jacocoConfig = jacocoPlugin.configuration;
   return jacocoConfig;
 }
 
