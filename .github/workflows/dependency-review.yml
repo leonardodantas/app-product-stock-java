@@ -1,4 +1,4 @@
-name: Meu Fluxo de Trabalho
+name: Java Workflow
 
 on:
   push:
@@ -10,8 +10,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout do código-fonte
+      - name: Set up Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+
+      - name: Check out repository
         uses: actions/checkout@v2
 
-      - name: Executar script JavaScript
-        run: node .github/scripts/meu_script.js
+      - name: Build and Run Java Script
+        run: |
+          javac .github/scripts/GitHubActionsExample.java
+          java .github/scripts/GitHubActionsExample
