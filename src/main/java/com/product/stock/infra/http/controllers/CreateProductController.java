@@ -4,14 +4,14 @@ import com.product.stock.app.usecases.CreateProduct;
 import com.product.stock.infra.http.converters.ProductRequestConverter;
 import com.product.stock.infra.http.jsons.requests.ProductRequest;
 import com.product.stock.infra.http.jsons.response.ProductResponse;
+import jakarta.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("v1/product")
 public class CreateProductController {
 
     private static final Logger logger = LoggerFactory.getLogger(CreateProductController.class);
@@ -25,7 +25,7 @@ public class CreateProductController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ProductResponse create(final ProductRequest request) {
+    public ProductResponse create(@Valid @RequestBody final ProductRequest request) {
         logger.info("Starting create product with name {}", request.name());
         final var product = productRequestConverter.convert(request);
         final var response = createProduct.execute(product);

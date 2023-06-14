@@ -13,15 +13,15 @@ import java.io.IOException;
 import static com.fasterxml.jackson.annotation.JsonInclude.Include.NON_NULL;
 import static com.fasterxml.jackson.databind.SerializationFeature.WRITE_DATES_AS_TIMESTAMPS;
 
-public class GetMockJson {
+public final class GetMockJson {
 
-    private final ObjectMapper objectMapper = Jackson2ObjectMapperBuilder.json()
+    private static final ObjectMapper objectMapper = Jackson2ObjectMapperBuilder.json()
             .serializationInclusion(NON_NULL)
             .featuresToDisable(WRITE_DATES_AS_TIMESTAMPS)
             .simpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
             .build();
 
-    public <T> T getObject(final String fileName, final Class<T> klass) {
+    public static <T> T getObject(final String fileName, final Class<T> klass) {
         try {
             final var pathFile = String.format("src/test/resources/mocks/%s.json", fileName);
             final var jsonObject = (JsonObject) JsonParser.parseReader(new FileReader(pathFile));
@@ -31,7 +31,7 @@ public class GetMockJson {
         }
     }
 
-    public <T> T getList(final String fileName, TypeReference<T> klass) {
+    public static <T> T getList(final String fileName, TypeReference<T> klass) {
         try {
             final var pathFile = String.format("src/test/resources/mocks/%s.json", fileName);
             final var jsonArray = (JsonArray) JsonParser.parseReader(new FileReader(pathFile));

@@ -21,27 +21,27 @@ public record ErrorResponse(
         private String path;
         private String exception;
 
-        public Builder message(String message) {
+        public Builder message(final String message) {
             this.message = message;
             return this;
         }
 
-        public Builder error(String error) {
+        public Builder error(final String error) {
             this.error = error;
             return this;
         }
 
-        public Builder status(HttpStatus status) {
+        public Builder status(final HttpStatus status) {
             this.status = status;
             return this;
         }
 
-        public Builder path(String path) {
+        public Builder path(final String path) {
             this.path = path;
             return this;
         }
 
-        public Builder exception(String exception) {
+        public Builder exception(final String exception) {
             this.exception = exception;
             return this;
         }
