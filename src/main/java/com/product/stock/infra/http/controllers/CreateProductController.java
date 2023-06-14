@@ -2,7 +2,7 @@ package com.product.stock.infra.http.controllers;
 
 import com.product.stock.app.usecases.CreateProduct;
 import com.product.stock.infra.http.converters.ProductRequestConverter;
-import com.product.stock.infra.http.jsons.requests.ProductRequest;
+import com.product.stock.infra.http.jsons.requests.ProductCreateRequest;
 import com.product.stock.infra.http.jsons.response.ProductResponse;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
@@ -25,7 +25,7 @@ public class CreateProductController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ProductResponse create(@Valid @RequestBody final ProductRequest request) {
+    public ProductResponse create(@Valid @RequestBody final ProductCreateRequest request) {
         logger.info("Starting create product with name {}", request.name());
         final var product = productRequestConverter.convert(request);
         final var response = createProduct.execute(product);

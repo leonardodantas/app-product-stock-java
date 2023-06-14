@@ -1,0 +1,11 @@
+{
+  "code": "123",
+  "name": "Televisão tamanho familia",
+  "description": "Televisão 55 polegadas",
+  "price": 4200,
+  "quantity": 15,
+  "details": [
+    "diversão",
+    "eletrodomestico"
+  ]
+}

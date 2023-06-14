@@ -1,0 +1,11 @@
+{
+  "code": "123",
+  "name": "Televisão",
+  "description": "Televisão 50 polegadas",
+  "price": 4000,
+  "quantity": 5,
+  "details": [
+    "diversão",
+    "diversão"
+  ]
+}

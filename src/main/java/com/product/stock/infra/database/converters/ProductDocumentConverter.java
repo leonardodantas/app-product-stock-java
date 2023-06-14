@@ -15,9 +15,10 @@ public class ProductDocumentConverter implements Converter<ProductDocument, Prod
     @Override
     public Product convert(final ProductDocument document) {
         logger.info("Convert ProductEntity to Product domain");
-        return Product.builder(document.name(), document.description(), document.price())
+        return Product.builder(document.code(), document.name(), document.description(), document.price())
                 .id(document.id())
                 .create(document.create())
+                .details(document.details())
                 .build();
     }
 }

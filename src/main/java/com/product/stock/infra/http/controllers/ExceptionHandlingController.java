@@ -1,5 +1,7 @@
 package com.product.stock.infra.http.controllers;
 
+import com.product.stock.app.exceptions.DocumentAlreadyExistException;
+import com.product.stock.app.exceptions.ProductNotFoundException;
 import com.product.stock.infra.exceptions.SaveObjectException;
 import com.product.stock.infra.http.jsons.response.ErrorResponse;
 import jakarta.servlet.http.HttpServletRequest;
@@ -21,6 +23,34 @@ public class ExceptionHandlingController {
                 .path(request.getRequestURI())
                 .status(HttpStatus.UNPROCESSABLE_ENTITY)
                 .exception(SaveObjectException.class.getSimpleName())
+                .build();
+
+        return new ResponseEntity<>(response, response.status());
+    }
+
+    @ExceptionHandler(DocumentAlreadyExistException.class)
+    public ResponseEntity<ErrorResponse> handlerDocumentAlreadyExistException(final DocumentAlreadyExistException exception, final HttpServletRequest request) {
+
+        final var response = ErrorResponse.builder()
+                .message(exception.getMessage())
+                .error(exception.getLocalizedMessage())
+                .path(request.getRequestURI())
+                .status(HttpStatus.BAD_REQUEST)
+                .exception(DocumentAlreadyExistException.class.getSimpleName())
+                .build();
+
+        return new ResponseEntity<>(response, response.status());
+    }
+
+    @ExceptionHandler(ProductNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handlerProductNotFoundException(final ProductNotFoundException exception, final HttpServletRequest request) {
+
+        final var response = ErrorResponse.builder()
+                .message(exception.getMessage())
+                .error(exception.getLocalizedMessage())
+                .path(request.getRequestURI())
+                .status(HttpStatus.UNPROCESSABLE_ENTITY)
+                .exception(ProductNotFoundException.class.getSimpleName())
                 .build();
 
         return new ResponseEntity<>(response, response.status());

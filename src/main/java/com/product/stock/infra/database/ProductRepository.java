@@ -10,6 +10,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public class ProductRepository implements IProductRepository {
 
@@ -34,5 +36,11 @@ public class ProductRepository implements IProductRepository {
             throw new SaveObjectException(String.format("Error save product %s", product.name()), e);
         }
 
+    }
+
+    @Override
+    public Optional<Product> findByCode(final String code) {
+        logger.info("Execute method find by with {} in repository ProductRepository", code);
+        return productRepositoryJPA.findByCode(code);
     }
 }
