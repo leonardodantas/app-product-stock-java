@@ -41,6 +41,21 @@ public class ProductRepository implements IProductRepository {
     @Override
     public Optional<Product> findByCode(final String code) {
         logger.info("Execute method find by with {} in repository ProductRepository", code);
-        return productRepositoryJPA.findByCode(code);
+        final var document = productRepositoryJPA.findByCode(code);
+        return getOptionalProduct(document);
+    }
+
+    @Override
+    public Optional<Product> findById(final String id) {
+        logger.info("Execute method find by with {} in repository ProductRepository", id);
+        final var document = productRepositoryJPA.findById(id);
+        return getOptionalProduct(document);
+    }
+
+    private Optional<Product> getOptionalProduct(final Optional<ProductDocument> document) {
+        return document.map(d -> {
+            final var product = productDocumentConverter.convert(d);
+            return Optional.ofNullable(product);
+        }).orElse(Optional.empty());
     }
 }
