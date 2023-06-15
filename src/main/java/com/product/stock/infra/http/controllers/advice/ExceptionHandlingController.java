@@ -1,4 +1,4 @@
-package com.product.stock.infra.http.controllers;
+package com.product.stock.infra.http.controllers.advice;
 
 import com.product.stock.app.exceptions.DocumentAlreadyExistException;
 import com.product.stock.app.exceptions.ProductNotFoundException;

@@ -5,9 +5,7 @@ import com.product.stock.infra.database.documents.ProductDocument;
 import com.product.stock.infra.http.jsons.requests.ProductCreateRequest;
 import com.product.stock.infra.http.jsons.response.ErrorResponse;
 import com.product.stock.infra.http.jsons.response.ProductResponse;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -31,6 +29,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 @DirtiesContext
 @ActiveProfiles("test")
 @ExtendWith(SpringExtension.class)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @SpringBootTest(classes = {Application.class}, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class UpdateProductIntegrationTest extends MONGODBTestContainerConfiguration {
 
@@ -42,6 +41,7 @@ public class UpdateProductIntegrationTest extends MONGODBTestContainerConfigurat
     private MongoTemplate mongoTemplate;
 
     @Test
+    @Order(1)
     @DisplayName("Atualizando um produto com sucesso")
     public void shouldUpdateProduct() {
 
@@ -69,6 +69,7 @@ public class UpdateProductIntegrationTest extends MONGODBTestContainerConfigurat
     }
 
     @Test
+    @Order(2)
     @DisplayName("Lançando exception pois não existe nenhum produto com esse codigo cadastrado")
     public void shouldThrowProductNotFoundException() {
 

@@ -5,9 +5,7 @@ import com.product.stock.infra.database.documents.ProductDocument;
 import com.product.stock.infra.http.jsons.requests.ProductCreateRequest;
 import com.product.stock.infra.http.jsons.response.ErrorResponse;
 import com.product.stock.infra.http.jsons.response.ProductResponse;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -28,6 +26,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @DirtiesContext
 @ActiveProfiles("test")
 @ExtendWith(SpringExtension.class)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @SpringBootTest(classes = {Application.class}, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class CreateProductIntegrationTest extends MONGODBTestContainerConfiguration {
 
@@ -39,6 +38,7 @@ public class CreateProductIntegrationTest extends MONGODBTestContainerConfigurat
     private MongoTemplate mongoTemplate;
 
     @Test
+    @Order(1)
     @DisplayName(value = "Salvando um novo produto com sucesso")
     public void shouldCreateProduct() {
 
@@ -52,6 +52,7 @@ public class CreateProductIntegrationTest extends MONGODBTestContainerConfigurat
         final var productResponse = response.getBody();
 
         assertNotNull(productResponse.id(), "ID validado");
+        assertEquals(request.code().toUpperCase(), productResponse.code(), "Codigo validado em upperCase");
         assertEquals(request.name(), productResponse.name(), "Nome validado");
         assertEquals(request.description(), productResponse.description(), "Descrição validado");
         assertEquals(request.price().compareTo(productResponse.price()), 0, "Preço validado");
@@ -60,9 +61,12 @@ public class CreateProductIntegrationTest extends MONGODBTestContainerConfigurat
         final var productExistInDataBase = mongoTemplate.exists(Query.query(Criteria.where("id").is(productResponse.id())), ProductDocument.class);
 
         assertTrue(productExistInDataBase, "Produto inserido na base de dados");
+
+        mongoTemplate.dropCollection("products");
     }
 
     @Test
+    @Order(2)
     @DisplayName(value = "Lançando uma exception pois já existe um produto cadastrado com o mesmo codigo na base de dados")
     public void shouldThrowDocumentAlreadyExistException() {
 
@@ -79,9 +83,12 @@ public class CreateProductIntegrationTest extends MONGODBTestContainerConfigurat
 
         assertEquals(HttpStatusCode.valueOf(400), errorResponse.status());
         assertEquals("DocumentAlreadyExistException", errorResponse.exception());
+
+        mongoTemplate.dropCollection("products");
     }
 
     @Test
+    @Order(3)
     @DisplayName("Lançando um MethodArgumentNotValidException ao validar um produto invalido com Bean Validation")
     public void shouldValidateRequestWithBeanValidation() {
 
@@ -97,10 +104,11 @@ public class CreateProductIntegrationTest extends MONGODBTestContainerConfigurat
     }
 
     @Test
+    @Order(4)
     @DisplayName("Lançando um MethodArgumentNotValidException ao validar uma lista de detalhes vazia")
-    public void shouldValidateRequestWithoutDetails() {
+    public void shouldValidateRequestWithDetailsEmpty() {
 
-        final var request = GetMockJson.getObject("products/product_without_details_request", ProductCreateRequest.class);
+        final var request = GetMockJson.getObject("products/product_with_details_empty_request", ProductCreateRequest.class);
 
         final var response =
                 restTemplate.postForEntity("http://localhost:" + port + "/v1/product", request, ErrorResponse.class);
@@ -112,6 +120,23 @@ public class CreateProductIntegrationTest extends MONGODBTestContainerConfigurat
     }
 
     @Test
+    @Order(5)
+    @DisplayName("Lançando um MethodArgumentNotValidException ao validar uma lista de detalhes nula")
+    public void shouldValidateRequestWithDetailsNull() {
+
+        final var request = GetMockJson.getObject("products/product_with_details_null_request", ProductCreateRequest.class);
+
+        final var response =
+                restTemplate.postForEntity("http://localhost:" + port + "/v1/product", request, ErrorResponse.class);
+
+        final var errorResponse = response.getBody();
+
+        assertEquals(HttpStatusCode.valueOf(400), errorResponse.status());
+        assertEquals("MethodArgumentNotValidException", errorResponse.exception());
+    }
+
+    @Test
+    @Order(6)
     @DisplayName("Lançando um MethodArgumentNotValidException ao validar uma lista de detalhes repetidos")
     public void shouldValidateRequestWithDetailsRepeated() {
 
@@ -126,8 +151,4 @@ public class CreateProductIntegrationTest extends MONGODBTestContainerConfigurat
         assertEquals("MethodArgumentNotValidException", errorResponse.exception());
     }
 
-    @BeforeEach
-    public void beforeAll() {
-        mongoTemplate.dropCollection("products");
-    }
 }

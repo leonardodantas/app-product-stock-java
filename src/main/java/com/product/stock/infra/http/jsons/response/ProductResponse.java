@@ -8,6 +8,7 @@ import java.util.List;
 public record ProductResponse(
 
         String id,
+        String code,
         String name,
         String description,
         BigDecimal price,
@@ -16,7 +17,7 @@ public record ProductResponse(
 ) {
     public static ProductResponse from(final Product product) {
         return new ProductResponse(
-                product.id(), product.name(),
+                product.id(), product.code(), product.name(),
                 product.description(), product.price(),
                 product.quantity(), product.details());
     }

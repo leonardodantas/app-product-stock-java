@@ -19,6 +19,11 @@ public record Product(
         List<String> details
 ) {
 
+    @Override
+    public String code() {
+        return code.trim().toUpperCase();
+    }
+
     public static Builder builder(final String code, final String name, final String description, final BigDecimal price) {
         return new Builder(code, name, description, price);
     }
