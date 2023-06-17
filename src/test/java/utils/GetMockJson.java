@@ -3,10 +3,12 @@ package utils;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -23,21 +25,24 @@ public final class GetMockJson {
 
     public static <T> T getObject(final String fileName, final Class<T> klass) {
         try {
-            final var pathFile = String.format("src/test/resources/mocks/%s.json", fileName);
-            final var jsonObject = (JsonObject) JsonParser.parseReader(new FileReader(pathFile));
+            final var jsonObject = (JsonObject) getJsonElements(fileName);
             return objectMapper.readValue(jsonObject.toString(), klass);
         } catch (final IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public static <T> T getList(final String fileName, TypeReference<T> klass) {
+    public static <T> T getList(final String fileName, final TypeReference<T> typeReference) {
         try {
-            final var pathFile = String.format("src/test/resources/mocks/%s.json", fileName);
-            final var jsonArray = (JsonArray) JsonParser.parseReader(new FileReader(pathFile));
-            return objectMapper.readValue(jsonArray.toString(), klass);
+            final var jsonArray = (JsonArray) getJsonElements(fileName);
+            return objectMapper.readValue(jsonArray.toString(), typeReference);
         } catch (final IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private static JsonElement getJsonElements(final String fileName) throws FileNotFoundException {
+        final var pathFile = String.format("src/test/resources/mocks/%s.json", fileName);
+        return JsonParser.parseReader(new FileReader(pathFile));
     }
 }

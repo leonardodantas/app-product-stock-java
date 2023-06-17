@@ -8,6 +8,8 @@ import com.product.stock.infra.database.jpa.ProductRepositoryJPA;
 import com.product.stock.infra.exceptions.SaveObjectException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
@@ -50,6 +52,18 @@ public class ProductRepository implements IProductRepository {
         logger.info("Execute method find by with {} in repository ProductRepository", id);
         final var document = productRepositoryJPA.findById(id);
         return getOptionalProduct(document);
+    }
+
+    @Override
+    public Page<Product> findAll(final int page, final int size) {
+        logger.info("Execute method find all with page {} and size {} in repository ProductRepository", page, size);
+        return productRepositoryJPA.findAll(PageRequest.of(page, size))
+                .map(productDocumentConverter::convert);
+    }
+
+    @Override
+    public void delete(final String id) {
+        productRepositoryJPA.deleteById(id);
     }
 
     private Optional<Product> getOptionalProduct(final Optional<ProductDocument> document) {

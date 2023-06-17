@@ -85,7 +85,7 @@ public class UpdateProductIntegrationTest extends MONGODBTestContainerConfigurat
 
         final var errorResponse = response.getBody();
 
-        assertEquals(HttpStatusCode.valueOf(422), errorResponse.status());
+        assertEquals(HttpStatusCode.valueOf(404), errorResponse.status());
         assertEquals("ProductNotFoundException", errorResponse.exception());
     }
 

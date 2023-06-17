@@ -49,7 +49,7 @@ public class ExceptionHandlingController {
                 .message(exception.getMessage())
                 .error(exception.getLocalizedMessage())
                 .path(request.getRequestURI())
-                .status(HttpStatus.UNPROCESSABLE_ENTITY)
+                .status(HttpStatus.NOT_FOUND)
                 .exception(ProductNotFoundException.class.getSimpleName())
                 .build();
 

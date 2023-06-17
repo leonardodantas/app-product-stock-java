@@ -1,0 +1,405 @@
+[
+  {
+    "id": "aaf6e7ae-3481-4e9e-9f28-36ff1f2285d9",
+    "code": "123",
+    "name": "Televisão",
+    "description": "Televisão 50 polegadas",
+    "price": 4000,
+    "quantity": 5,
+    "details": [
+      "casa",
+      "diversão",
+      "eletrodomestico"
+    ]
+  },
+  {
+    "id": "e5a783d2-ff57-4f9f-a523-91be320ea0c9",
+    "code": "210",
+    "name": "Impressora",
+    "description": "Impressora a jato de tinta",
+    "price": 300,
+    "quantity": 2,
+    "details": [
+      "escritório",
+      "impressão",
+      "periférico"
+    ]
+  },
+  {
+    "id": "6e2e90e3-5c44-4f5a-a45f-dbc04f0b3dd1",
+    "code": "543",
+    "name": "Fone de Ouvido",
+    "description": "Fone de Ouvido sem fio",
+    "price": 150,
+    "quantity": 8,
+    "details": [
+      "áudio",
+      "música",
+      "acessório"
+    ]
+  },
+  {
+    "id": "eaf5ce27-5464-4ad1-91db-2d5ff331c1fb",
+    "code": "678",
+    "name": "Escova de Dentes",
+    "description": "Escova de Dentes Elétrica",
+    "price": 50,
+    "quantity": 10,
+    "details": [
+      "higiene",
+      "saúde",
+      "bucal"
+    ]
+  },
+  {
+    "id": "8a2e6dbb-8f96-4552-82f3-cd129abf32e5",
+    "code": "876",
+    "name": "Mesa de Centro",
+    "description": "Mesa de Centro de Vidro",
+    "price": 400,
+    "quantity": 3,
+    "details": [
+      "sala",
+      "móvel",
+      "decoração"
+    ]
+  },
+  {
+    "id": "f1443c3c-0c55-48cd-9e9e-72b4b5a7c95b",
+    "code": "109",
+    "name": "Liquidificador",
+    "description": "Liquidificador com 10 velocidades",
+    "price": 80,
+    "quantity": 6,
+    "details": [
+      "cozinha",
+      "eletrodoméstico",
+      "preparo"
+    ]
+  },
+  {
+    "id": "cdab4f5b-2f52-45e3-90f1-96c0c7f6e2a6",
+    "code": "765",
+    "name": "Cadeado",
+    "description": "Cadeado de Segurança",
+    "price": 20,
+    "quantity": 20,
+    "details": [
+      "segurança",
+      "acessório",
+      "viagem"
+    ]
+  },
+  {
+    "id": "b4a3ebe7-0a40-40fb-af1a-69496e5d01a6",
+    "code": "432",
+    "name": "Aspirador de Pó",
+    "description": "Aspirador de Pó Portátil",
+    "price": 150,
+    "quantity": 5,
+    "details": [
+      "limpeza",
+      "eletrodoméstico",
+      "manutenção"
+    ]
+  },
+  {
+    "id": "9a6a4e3d-996e-4c68-9cfc-8a4c5d2e88fe",
+    "code": "987",
+    "name": "Caixa de Som",
+    "description": "Caixa de Som Bluetooth",
+    "price": 200,
+    "quantity": 4,
+    "details": [
+      "áudio",
+      "música",
+      "portátil"
+    ]
+  },
+  {
+    "id": "ebd0c0cc-1d53-4f4d-86f3-303e046011e2",
+    "code": "654",
+    "name": "Conjunto de Talheres",
+    "description": "Conjunto de Talheres de Aço Inox",
+    "price": 60,
+    "quantity": 8,
+    "details": [
+      "cozinha",
+      "utensílio",
+      "refeição"
+    ]
+  },
+  {
+    "id": "78e3a512-34be-4e84-8c9e-dbf8c28a06d4",
+    "code": "321",
+    "name": "Espelho",
+    "description": "Espelho de Parede",
+    "price": 100,
+    "quantity": 2,
+    "details": [
+      "casa",
+      "decoração",
+      "visual"
+    ]
+  },
+  {
+    "id": "572d0704-d8d4-48b9-9f0d-042f1ebd20ae",
+    "code": "109",
+    "name": "Panela",
+    "description": "Panela antiaderente",
+    "price": 50,
+    "quantity": 10,
+    "details": [
+      "cozinha",
+      "culinária",
+      "utensílio"
+    ]
+  },
+  {
+    "id": "4f7cfe8c-63b0-4d0d-b0de-d1e6e199b8f7",
+    "code": "876",
+    "name": "Cômoda",
+    "description": "Cômoda de madeira",
+    "price": 600,
+    "quantity": 3,
+    "details": [
+      "quarto",
+      "móvel",
+      "organização"
+    ]
+  },
+  {
+    "id": "a13426c9-685b-40c3-9259-8e9de2b5096a",
+    "code": "987",
+    "name": "Microondas",
+    "description": "Microondas 30 litros",
+    "price": 400,
+    "quantity": 5,
+    "details": [
+      "cozinha",
+      "aquecimento",
+      "eletrodoméstico"
+    ]
+  },
+  {
+    "id": "abfd689c-9d17-43ce-8d20-ae7e694b7f19",
+    "code": "678",
+    "name": "Tapete",
+    "description": "Tapete felpudo",
+    "price": 200,
+    "quantity": 4,
+    "details": [
+      "decoração",
+      "acessório",
+      "conforto"
+    ]
+  },
+  {
+    "id": "63467efc-788f-44e5-a0f6-8d1b2518b3fe",
+    "code": "543",
+    "name": "Cafeteira",
+    "description": "Cafeteira elétrica",
+    "price": 80,
+    "quantity": 8,
+    "details": [
+      "cozinha",
+      "café",
+      "eletrodoméstico"
+    ]
+  },
+  {
+    "id": "ea4e83a2-877b-4237-9a13-c6e27e4b327e",
+    "code": "210",
+    "name": "Mochila",
+    "description": "Mochila para viagem",
+    "price": 150,
+    "quantity": 12,
+    "details": [
+      "viagem",
+      "acessório",
+      "bagagem"
+    ]
+  },
+  {
+    "id": "fd15e27a-7301-4d6d-9b24-309c163a1edf",
+    "code": "765",
+    "name": "Monitor",
+    "description": "Monitor 27 polegadas",
+    "price": 800,
+    "quantity": 6,
+    "details": [
+      "trabalho",
+      "informática",
+      "tecnologia"
+    ]
+  },
+  {
+    "id": "8b901a90-55b6-476d-8902-fbfdb9f777e5",
+    "code": "987",
+    "name": "Forno",
+    "description": "Forno elétrico",
+    "price": 1200,
+    "quantity": 3,
+    "details": [
+      "cozinha",
+      "eletrodoméstico",
+      "gastronomia"
+    ]
+  },
+  {
+    "id": "3f2923c7-4230-4df5-8b7d-3f7d40d5323b",
+    "code": "876",
+    "name": "Sofá",
+    "description": "Sofá de couro",
+    "price": 2500,
+    "quantity": 2,
+    "details": [
+      "sala",
+      "móvel",
+      "conforto"
+    ]
+  },
+  {
+    "id": "db65f2b5-97a2-4c15-845d-63bbdb049cf4",
+    "code": "432",
+    "name": "Ventilador",
+    "description": "Ventilador de mesa",
+    "price": 100,
+    "quantity": 10,
+    "details": [
+      "refrescante",
+      "eletrodoméstico",
+      "ventilação"
+    ]
+  },
+  {
+    "id": "7e4e716a-3dc0-4d3e-9065-5195a8e1a7c1",
+    "code": "109",
+    "name": "Máquina de Lavar",
+    "description": "Máquina de Lavar 10kg",
+    "price": 1800,
+    "quantity": 5,
+    "details": [
+      "lavanderia",
+      "eletrodoméstico",
+      "limpeza"
+    ]
+  },
+  {
+    "id": "513c5eb2-4f7b-4ab2-bbce-90a901a1f07c",
+    "code": "876",
+    "name": "Bicicleta",
+    "description": "Bicicleta de montanha",
+    "price": 2000,
+    "quantity": 3,
+    "details": [
+      "esporte",
+      "aventura",
+      "transporte"
+    ]
+  },
+  {
+    "id": "8dbcd0fc-6862-4f97-9139-44f5fcd09848",
+    "code": "321",
+    "name": "Cama",
+    "description": "Cama de casal",
+    "price": 1500,
+    "quantity": 2,
+    "details": [
+      "quarto",
+      "móvel",
+      "conforto"
+    ]
+  },
+  {
+    "id": "30a7e45d-4916-4e48-8c1b-ae1391b8b86a",
+    "code": "654",
+    "name": "Fogão",
+    "description": "Fogão 4 bocas",
+    "price": 1200,
+    "quantity": 4,
+    "details": [
+      "cozinha",
+      "eletrodoméstico",
+      "gastronomia"
+    ]
+  },
+  {
+    "id": "f0de3a2d-70c2-4341-8c35-d15a773e6ef7",
+    "code": "987",
+    "name": "Mesa",
+    "description": "Mesa de jantar",
+    "price": 800,
+    "quantity": 6,
+    "details": [
+      "casa",
+      "móvel",
+      "decoração"
+    ]
+  },
+  {
+    "id": "e7de16f2-8a5e-4a20-8a0b-3d16b7369f57",
+    "code": "890",
+    "name": "Geladeira",
+    "description": "Geladeira Frost Free",
+    "price": 3000,
+    "quantity": 2,
+    "details": [
+      "cozinha",
+      "refrigeração",
+      "eletrodoméstico"
+    ]
+  },
+  {
+    "id": "be0ebab5-9685-4926-9380-89b2373db8b2",
+    "code": "567",
+    "name": "Livro",
+    "description": "Romance clássico",
+    "price": 30,
+    "quantity": 15,
+    "details": [
+      "literatura",
+      "leitura",
+      "entretenimento"
+    ]
+  },
+  {
+    "id": "1bfe4d67-9d03-4a09-aa7e-0b64697250c5",
+    "code": "234",
+    "name": "Cadeira",
+    "description": "Cadeira ergonômica",
+    "price": 500,
+    "quantity": 10,
+    "details": [
+      "escritório",
+      "conforto",
+      "móvel"
+    ]
+  },
+  {
+    "id": "c9371a43-126d-4db2-902f-2a612a516b3e",
+    "code": "789",
+    "name": "Smartphone",
+    "description": "Smartphone Android 10",
+    "price": 1500,
+    "quantity": 8,
+    "details": [
+      "comunicação",
+      "tecnologia",
+      "celular"
+    ]
+  },
+  {
+    "id": "9b25689e-3a6f-4f6b-8a12-fd3e4117bbf2",
+    "code": "456",
+    "name": "Notebook",
+    "description": "Notebook Intel Core i5",
+    "price": 2500,
+    "quantity": 3,
+    "details": [
+      "trabalho",
+      "informática",
+      "portátil"
+    ]
+  }
+]
