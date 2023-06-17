@@ -16,6 +16,7 @@ public record Product(
         int quantity,
         LocalDateTime create,
         LocalDateTime update,
+        boolean active,
         List<String> details
 ) {
 
@@ -28,8 +29,12 @@ public record Product(
         return new Builder(code, name, description, price);
     }
 
+    public Product activeProduct() {
+        return new Product(id, this.code, this.name, this.description, this.price, this.quantity, this.create, this.update, true, this.details);
+    }
+
     public Product of(final String id, final LocalDateTime create, final LocalDateTime update) {
-        return new Product(id, this.code, this.name, this.description, this.price, this.quantity, create, update, this.details);
+        return new Product(id, this.code, this.name, this.description, this.price, this.quantity, create, update, this.active, this.details);
     }
 
     public static class Builder {
@@ -41,6 +46,7 @@ public record Product(
         private int quantity;
         private LocalDateTime create;
         private LocalDateTime update;
+        private boolean active;
         private List<String> details;
 
         public Builder(final String code, final String name, final String description, final BigDecimal price) {
@@ -76,8 +82,13 @@ public record Product(
             return this;
         }
 
+        public Builder active(final boolean active) {
+            this.active = active;
+            return this;
+        }
+
         public Product build() {
-            return new Product(id, code, name, description, price, quantity, isNull(create) ? LocalDateTime.now() : create, isNull(update) ? LocalDateTime.now() : update, details);
+            return new Product(id, code, name, description, price, quantity, isNull(create) ? LocalDateTime.now() : create, isNull(update) ? LocalDateTime.now() : update, active, details);
         }
     }
 }

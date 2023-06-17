@@ -58,7 +58,8 @@ public class CreateProductIntegrationTest extends MONGODBTestContainerConfigurat
         assertEquals(request.price().compareTo(productResponse.price()), 0, "Preço validado");
         assertEquals(3, request.details().size());
 
-        final var productExistInDataBase = mongoTemplate.exists(Query.query(Criteria.where("id").is(productResponse.id())), ProductDocument.class);
+        final var productExistInDataBase = mongoTemplate.exists(Query.query(Criteria.where("id")
+                .is(productResponse.id()).and("active").is(true)), ProductDocument.class);
 
         assertTrue(productExistInDataBase, "Produto inserido na base de dados");
 

@@ -19,6 +19,7 @@ public record ProductDocument(
         int quantity,
         LocalDateTime create,
         LocalDateTime update,
+        boolean active,
         List<String> details
 ) {
     public static ProductDocument from(final Product product) {
@@ -31,6 +32,7 @@ public record ProductDocument(
                 product.quantity(),
                 product.create(),
                 product.update(),
+                product.active(),
                 product.details()
         );
     }

@@ -6,6 +6,7 @@
     "description": "Televisão 50 polegadas",
     "price": 4000,
     "quantity": 5,
+    "active": true,
     "details": [
       "casa",
       "diversão",
@@ -19,6 +20,7 @@
     "description": "Impressora a jato de tinta",
     "price": 300,
     "quantity": 2,
+    "active": true,
     "details": [
       "escritório",
       "impressão",
@@ -32,6 +34,7 @@
     "description": "Fone de Ouvido sem fio",
     "price": 150,
     "quantity": 8,
+    "active": true,
     "details": [
       "áudio",
       "música",
@@ -45,6 +48,7 @@
     "description": "Escova de Dentes Elétrica",
     "price": 50,
     "quantity": 10,
+    "active": true,
     "details": [
       "higiene",
       "saúde",
@@ -71,6 +75,7 @@
     "description": "Liquidificador com 10 velocidades",
     "price": 80,
     "quantity": 6,
+    "active": true,
     "details": [
       "cozinha",
       "eletrodoméstico",
@@ -84,6 +89,8 @@
     "description": "Cadeado de Segurança",
     "price": 20,
     "quantity": 20,
+    "active": true,
+    "active": true,
     "details": [
       "segurança",
       "acessório",
@@ -97,6 +104,7 @@
     "description": "Aspirador de Pó Portátil",
     "price": 150,
     "quantity": 5,
+    "active": true,
     "details": [
       "limpeza",
       "eletrodoméstico",
@@ -110,6 +118,7 @@
     "description": "Caixa de Som Bluetooth",
     "price": 200,
     "quantity": 4,
+    "active": true,
     "details": [
       "áudio",
       "música",
@@ -123,6 +132,7 @@
     "description": "Conjunto de Talheres de Aço Inox",
     "price": 60,
     "quantity": 8,
+    "active": true,
     "details": [
       "cozinha",
       "utensílio",
@@ -136,6 +146,7 @@
     "description": "Espelho de Parede",
     "price": 100,
     "quantity": 2,
+    "active": true,
     "details": [
       "casa",
       "decoração",
@@ -149,6 +160,7 @@
     "description": "Panela antiaderente",
     "price": 50,
     "quantity": 10,
+    "active": true,
     "details": [
       "cozinha",
       "culinária",
@@ -162,6 +174,7 @@
     "description": "Cômoda de madeira",
     "price": 600,
     "quantity": 3,
+    "active": true,
     "details": [
       "quarto",
       "móvel",
@@ -175,6 +188,7 @@
     "description": "Microondas 30 litros",
     "price": 400,
     "quantity": 5,
+    "active": true,
     "details": [
       "cozinha",
       "aquecimento",
@@ -188,6 +202,7 @@
     "description": "Tapete felpudo",
     "price": 200,
     "quantity": 4,
+    "active": true,
     "details": [
       "decoração",
       "acessório",
@@ -201,6 +216,7 @@
     "description": "Cafeteira elétrica",
     "price": 80,
     "quantity": 8,
+    "active": true,
     "details": [
       "cozinha",
       "café",
@@ -214,6 +230,7 @@
     "description": "Mochila para viagem",
     "price": 150,
     "quantity": 12,
+    "active": true,
     "details": [
       "viagem",
       "acessório",
@@ -227,6 +244,7 @@
     "description": "Monitor 27 polegadas",
     "price": 800,
     "quantity": 6,
+    "active": true,
     "details": [
       "trabalho",
       "informática",
@@ -240,6 +258,7 @@
     "description": "Forno elétrico",
     "price": 1200,
     "quantity": 3,
+    "active": true,
     "details": [
       "cozinha",
       "eletrodoméstico",
@@ -253,6 +272,7 @@
     "description": "Sofá de couro",
     "price": 2500,
     "quantity": 2,
+    "active": true,
     "details": [
       "sala",
       "móvel",
@@ -266,6 +286,7 @@
     "description": "Ventilador de mesa",
     "price": 100,
     "quantity": 10,
+    "active": true,
     "details": [
       "refrescante",
       "eletrodoméstico",
@@ -279,6 +300,7 @@
     "description": "Máquina de Lavar 10kg",
     "price": 1800,
     "quantity": 5,
+    "active": false,
     "details": [
       "lavanderia",
       "eletrodoméstico",
@@ -292,6 +314,7 @@
     "description": "Bicicleta de montanha",
     "price": 2000,
     "quantity": 3,
+    "active": true,
     "details": [
       "esporte",
       "aventura",
@@ -305,6 +328,7 @@
     "description": "Cama de casal",
     "price": 1500,
     "quantity": 2,
+    "active": true,
     "details": [
       "quarto",
       "móvel",
@@ -318,6 +342,7 @@
     "description": "Fogão 4 bocas",
     "price": 1200,
     "quantity": 4,
+    "active": false,
     "details": [
       "cozinha",
       "eletrodoméstico",
@@ -331,6 +356,7 @@
     "description": "Mesa de jantar",
     "price": 800,
     "quantity": 6,
+    "active": true,
     "details": [
       "casa",
       "móvel",
@@ -344,6 +370,7 @@
     "description": "Geladeira Frost Free",
     "price": 3000,
     "quantity": 2,
+    "active": true,
     "details": [
       "cozinha",
       "refrigeração",
@@ -357,6 +384,7 @@
     "description": "Romance clássico",
     "price": 30,
     "quantity": 15,
+    "active": false,
     "details": [
       "literatura",
       "leitura",
@@ -370,6 +398,7 @@
     "description": "Cadeira ergonômica",
     "price": 500,
     "quantity": 10,
+    "active": true,
     "details": [
       "escritório",
       "conforto",
@@ -383,6 +412,7 @@
     "description": "Smartphone Android 10",
     "price": 1500,
     "quantity": 8,
+    "active": false,
     "details": [
       "comunicação",
       "tecnologia",
@@ -396,6 +426,7 @@
     "description": "Notebook Intel Core i5",
     "price": 2500,
     "quantity": 3,
+    "active": false,
     "details": [
       "trabalho",
       "informática",

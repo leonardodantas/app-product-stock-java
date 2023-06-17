@@ -22,6 +22,6 @@ public class CreateProduct {
         productRepository.findByCode(product.code()).ifPresent(productExist -> {
             throw new DocumentAlreadyExistException(String.format("Produto com codigo %s já cadastrado", product.code()));
         });
-        return productRepository.save(product);
+        return productRepository.save(product.activeProduct());
     }
 }

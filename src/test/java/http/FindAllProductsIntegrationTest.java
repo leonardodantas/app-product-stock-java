@@ -60,11 +60,11 @@ public class FindAllProductsIntegrationTest extends MONGODBTestContainerConfigur
 
         final var paginatedResult = response.getBody();
 
-        assertEquals(4, paginatedResult.totalPages());
+        assertEquals(3, paginatedResult.totalPages());
         assertEquals(1, paginatedResult.currentPage());
         assertEquals(10, paginatedResult.elements().size());
         assertEquals(10, paginatedResult.pageSize());
-        assertEquals(31, paginatedResult.totalElements());
+        assertEquals(25, paginatedResult.totalElements());
     }
 
     @Test
@@ -74,7 +74,7 @@ public class FindAllProductsIntegrationTest extends MONGODBTestContainerConfigur
         final var typeReference = new ParameterizedTypeReference<PaginatedResult<ProductResponse>>() {
         };
 
-        final var page = 3;
+        final var page = 2;
         final var size = 10;
 
         final var response =
@@ -84,10 +84,10 @@ public class FindAllProductsIntegrationTest extends MONGODBTestContainerConfigur
 
         final var paginatedResult = response.getBody();
 
-        assertEquals(4, paginatedResult.totalPages());
-        assertEquals(3, paginatedResult.currentPage());
-        assertEquals(1, paginatedResult.elements().size());
+        assertEquals(3, paginatedResult.totalPages());
+        assertEquals(2, paginatedResult.currentPage());
+        assertEquals(5, paginatedResult.elements().size());
         assertEquals(10, paginatedResult.pageSize());
-        assertEquals(31, paginatedResult.totalElements());
+        assertEquals(25, paginatedResult.totalElements());
     }
 }

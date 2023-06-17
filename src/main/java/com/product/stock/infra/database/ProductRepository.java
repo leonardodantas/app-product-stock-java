@@ -43,21 +43,21 @@ public class ProductRepository implements IProductRepository {
     @Override
     public Optional<Product> findByCode(final String code) {
         logger.info("Execute method find by with {} in repository ProductRepository", code);
-        final var document = productRepositoryJPA.findByCode(code);
+        final var document = productRepositoryJPA.findByCodeAndActiveTrue(code);
         return getOptionalProduct(document);
     }
 
     @Override
     public Optional<Product> findById(final String id) {
         logger.info("Execute method find by with {} in repository ProductRepository", id);
-        final var document = productRepositoryJPA.findById(id);
+        final var document = productRepositoryJPA.findByIdAndActiveTrue(id);
         return getOptionalProduct(document);
     }
 
     @Override
     public Page<Product> findAll(final int page, final int size) {
         logger.info("Execute method find all with page {} and size {} in repository ProductRepository", page, size);
-        return productRepositoryJPA.findAll(PageRequest.of(page, size))
+        return productRepositoryJPA.findAllByActiveTrue(PageRequest.of(page, size))
                 .map(productDocumentConverter::convert);
     }
 

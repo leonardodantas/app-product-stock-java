@@ -5,6 +5,7 @@
   "description": "Televisão 50 polegadas",
   "price": 4000,
   "quantity": 5,
+  "active": true,
   "details": [
     "casa",
     "diversão",
