@@ -2,6 +2,7 @@ package com.product.stock.infra.database.documents;
 
 import com.product.stock.domain.Product;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigDecimal;
@@ -12,6 +13,7 @@ import java.util.List;
 public record ProductDocument(
         @Id
         String id,
+        @Indexed(unique = true)
         String code,
         String name,
         String description,
