@@ -21,6 +21,8 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class UpdateProductIntegrationTest extends MONGODBTestContainerConfiguration {
 
+    private static final String PRODUCT_CODE = "ABC123XYZ";
+
     @Test
     @Order(1)
     @DisplayName("Atualizando um produto com sucesso")
@@ -34,7 +36,7 @@ public class UpdateProductIntegrationTest extends MONGODBTestContainerConfigurat
         final var productRequestHttpEntity = new HttpEntity<>(request);
 
         final var params = new HashMap<String, String>();
-        params.put("productCode", "123");
+        params.put("productCode", PRODUCT_CODE);
 
         final var response =
                 restTemplate.exchange(getBaseURL() + "v1/product/{productCode}", HttpMethod.PUT, productRequestHttpEntity, ProductResponse.class, params);
@@ -59,7 +61,7 @@ public class UpdateProductIntegrationTest extends MONGODBTestContainerConfigurat
         final var productRequestHttpEntity = new HttpEntity<>(request);
 
         final var params = new HashMap<String, String>();
-        params.put("productCode", "123");
+        params.put("productCode", PRODUCT_CODE);
 
         final var response =
                 restTemplate.exchange(getBaseURL() + "v1/product/{productCode}", HttpMethod.PUT, productRequestHttpEntity, ErrorResponse.class, params);

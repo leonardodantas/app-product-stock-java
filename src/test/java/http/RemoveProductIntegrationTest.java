@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RemoveProductIntegrationTest extends MONGODBTestContainerConfiguration {
 
-    private static final String PRODUCT_CODE = "123";
+    private static final String PRODUCT_CODE = "ABC123XYZ";
 
     @Test
     @Order(1)
