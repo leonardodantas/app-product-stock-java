@@ -8,9 +8,9 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Constraint(validatedBy = DetailsValidatorAnnotation.class)
-@Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
+@Retention(RetentionPolicy.RUNTIME)
+@Constraint(validatedBy = DetailsValidatorAnnotation.class)
 public @interface DetailsValid {
     public String message() default "Tamanho da lista não pode ser nula/vazia e items não podem ser repetir";
 

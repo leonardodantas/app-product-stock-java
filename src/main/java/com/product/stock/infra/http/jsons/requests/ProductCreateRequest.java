@@ -1,5 +1,6 @@
 package com.product.stock.infra.http.jsons.requests;
 
+import com.product.stock.infra.http.annotations.CodeValid;
 import com.product.stock.infra.http.annotations.DetailsValid;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
@@ -9,6 +10,7 @@ import java.util.List;
 
 public record ProductCreateRequest(
         @NotBlank
+        @CodeValid
         String code,
         @NotBlank
         String name,
