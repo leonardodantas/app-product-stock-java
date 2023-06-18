@@ -1,41 +1,21 @@
 package http;
 
-import com.product.stock.Application;
 import com.product.stock.infra.database.documents.ProductDocument;
 import com.product.stock.infra.http.jsons.requests.ProductCreateRequest;
 import com.product.stock.infra.http.jsons.response.ErrorResponse;
 import com.product.stock.infra.http.jsons.response.ProductResponse;
-import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.boot.test.web.server.LocalServerPort;
-import org.springframework.data.mongodb.core.MongoTemplate;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.http.HttpStatusCode;
-import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 import testcontainersconfig.MONGODBTestContainerConfiguration;
 import utils.GetMockJson;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@DirtiesContext
-@ActiveProfiles("test")
-@ExtendWith(SpringExtension.class)
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@SpringBootTest(classes = {Application.class}, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class CreateProductIntegrationTest extends MONGODBTestContainerConfiguration {
-
-    @LocalServerPort
-    private int port;
-    @Autowired
-    private TestRestTemplate restTemplate;
-    @Autowired
-    private MongoTemplate mongoTemplate;
 
     @Test
     @Order(1)
@@ -45,7 +25,7 @@ public class CreateProductIntegrationTest extends MONGODBTestContainerConfigurat
         final var request = GetMockJson.getObject("products/product_to_save_success_request", ProductCreateRequest.class);
 
         final var response =
-                restTemplate.postForEntity("http://localhost:" + port + "/v1/product", request, ProductResponse.class);
+                restTemplate.postForEntity(getBaseURL() + "v1/product", request, ProductResponse.class);
 
         assertEquals(HttpStatusCode.valueOf(201), response.getStatusCode());
 
@@ -78,7 +58,7 @@ public class CreateProductIntegrationTest extends MONGODBTestContainerConfigurat
         final var request = GetMockJson.getObject("products/product_to_save_success_request", ProductCreateRequest.class);
 
         final var response =
-                restTemplate.postForEntity("http://localhost:" + port + "/v1/product", request, ErrorResponse.class);
+                restTemplate.postForEntity(getBaseURL() + "v1/product", request, ErrorResponse.class);
 
         final var errorResponse = response.getBody();
 
@@ -96,7 +76,7 @@ public class CreateProductIntegrationTest extends MONGODBTestContainerConfigurat
         final var request = GetMockJson.getObject("products/product_to_bean_validation", ProductCreateRequest.class);
 
         final var response =
-                restTemplate.postForEntity("http://localhost:" + port + "/v1/product", request, ErrorResponse.class);
+                restTemplate.postForEntity(getBaseURL() + "v1/product", request, ErrorResponse.class);
 
         final var errorResponse = response.getBody();
 
@@ -112,7 +92,7 @@ public class CreateProductIntegrationTest extends MONGODBTestContainerConfigurat
         final var request = GetMockJson.getObject("products/product_with_details_empty_request", ProductCreateRequest.class);
 
         final var response =
-                restTemplate.postForEntity("http://localhost:" + port + "/v1/product", request, ErrorResponse.class);
+                restTemplate.postForEntity(getBaseURL() + "v1/product", request, ErrorResponse.class);
 
         final var errorResponse = response.getBody();
 
@@ -128,7 +108,7 @@ public class CreateProductIntegrationTest extends MONGODBTestContainerConfigurat
         final var request = GetMockJson.getObject("products/product_with_details_null_request", ProductCreateRequest.class);
 
         final var response =
-                restTemplate.postForEntity("http://localhost:" + port + "/v1/product", request, ErrorResponse.class);
+                restTemplate.postForEntity(getBaseURL() + "v1/product", request, ErrorResponse.class);
 
         final var errorResponse = response.getBody();
 
@@ -144,7 +124,7 @@ public class CreateProductIntegrationTest extends MONGODBTestContainerConfigurat
         final var request = GetMockJson.getObject("products/product_with_details_repeated_request", ProductCreateRequest.class);
 
         final var response =
-                restTemplate.postForEntity("http://localhost:" + port + "/v1/product", request, ErrorResponse.class);
+                restTemplate.postForEntity(getBaseURL() + "v1/product", request, ErrorResponse.class);
 
         final var errorResponse = response.getBody();
 

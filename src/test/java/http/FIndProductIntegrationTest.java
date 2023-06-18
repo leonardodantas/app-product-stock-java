@@ -1,19 +1,11 @@
 package http;
 
-import com.product.stock.Application;
 import com.product.stock.infra.database.documents.ProductDocument;
 import com.product.stock.infra.http.jsons.response.ProductResponse;
-import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.boot.test.web.server.LocalServerPort;
-import org.springframework.data.mongodb.core.MongoTemplate;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatusCode;
-import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 import testcontainersconfig.MONGODBTestContainerConfiguration;
 import utils.GetMockJson;
 
@@ -21,21 +13,10 @@ import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@DirtiesContext
-@ActiveProfiles("test")
-@ExtendWith(SpringExtension.class)
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@SpringBootTest(classes = {Application.class}, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class FIndProductIntegrationTest extends MONGODBTestContainerConfiguration {
 
     private static final String PRODUCT_CODE = "123";
     private static final String PRODUCT_ID = "0690e3d6-0a4b-11ee-be56-0242ac120002";
-    @LocalServerPort
-    private int port;
-    @Autowired
-    private TestRestTemplate restTemplate;
-    @Autowired
-    private MongoTemplate mongoTemplate;
 
     @Test
     @Order(1)
@@ -49,7 +30,7 @@ public class FIndProductIntegrationTest extends MONGODBTestContainerConfiguratio
         params.put("productCode", PRODUCT_CODE);
 
         final var response =
-                restTemplate.getForEntity("http://localhost:" + port + "/v1/product/code/{productCode}", ProductResponse.class, params);
+                restTemplate.getForEntity(getBaseURL() + "v1/product/code/{productCode}", ProductResponse.class, params);
 
         assertEquals(HttpStatusCode.valueOf(200), response.getStatusCode());
 
@@ -67,7 +48,7 @@ public class FIndProductIntegrationTest extends MONGODBTestContainerConfiguratio
         params.put("productCode", "1");
 
         final var response =
-                restTemplate.getForEntity("http://localhost:" + port + "/v1/product/code/{productCode}", Void.class, params);
+                restTemplate.getForEntity(getBaseURL() + "v1/product/code/{productCode}", Void.class, params);
 
         assertEquals(HttpStatusCode.valueOf(204), response.getStatusCode());
     }
@@ -81,7 +62,7 @@ public class FIndProductIntegrationTest extends MONGODBTestContainerConfiguratio
         params.put("productId", PRODUCT_ID);
 
         final var response =
-                restTemplate.getForEntity("http://localhost:" + port + "/v1/product/id/{productId}", ProductResponse.class, params);
+                restTemplate.getForEntity(getBaseURL() + "v1/product/id/{productId}", ProductResponse.class, params);
 
         assertEquals(HttpStatusCode.valueOf(200), response.getStatusCode());
 
@@ -99,7 +80,7 @@ public class FIndProductIntegrationTest extends MONGODBTestContainerConfiguratio
         params.put("productId", "2");
 
         final var response =
-                restTemplate.getForEntity("http://localhost:" + port + "/v1/product/id/{productId}", Void.class, params);
+                restTemplate.getForEntity(getBaseURL() + "v1/product/id/{productId}", Void.class, params);
 
         assertEquals(HttpStatusCode.valueOf(204), response.getStatusCode());
     }

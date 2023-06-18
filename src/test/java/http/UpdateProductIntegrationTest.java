@@ -1,23 +1,16 @@
 package http;
 
-import com.product.stock.Application;
 import com.product.stock.infra.database.documents.ProductDocument;
 import com.product.stock.infra.http.jsons.requests.ProductCreateRequest;
 import com.product.stock.infra.http.jsons.response.ErrorResponse;
 import com.product.stock.infra.http.jsons.response.ProductResponse;
-import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.boot.test.web.server.LocalServerPort;
-import org.springframework.data.mongodb.core.MongoTemplate;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatusCode;
-import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 import testcontainersconfig.MONGODBTestContainerConfiguration;
 import utils.GetMockJson;
 
@@ -26,19 +19,7 @@ import java.util.HashMap;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-@DirtiesContext
-@ActiveProfiles("test")
-@ExtendWith(SpringExtension.class)
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@SpringBootTest(classes = {Application.class}, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class UpdateProductIntegrationTest extends MONGODBTestContainerConfiguration {
-
-    @LocalServerPort
-    private int port;
-    @Autowired
-    private TestRestTemplate restTemplate;
-    @Autowired
-    private MongoTemplate mongoTemplate;
 
     @Test
     @Order(1)
@@ -56,7 +37,7 @@ public class UpdateProductIntegrationTest extends MONGODBTestContainerConfigurat
         params.put("productCode", "123");
 
         final var response =
-                restTemplate.exchange("http://localhost:" + port + "/v1/product/{productCode}", HttpMethod.PUT, productRequestHttpEntity, ProductResponse.class, params);
+                restTemplate.exchange(getBaseURL() + "v1/product/{productCode}", HttpMethod.PUT, productRequestHttpEntity, ProductResponse.class, params);
 
         assertEquals(HttpStatusCode.valueOf(200), response.getStatusCode());
 
@@ -81,7 +62,7 @@ public class UpdateProductIntegrationTest extends MONGODBTestContainerConfigurat
         params.put("productCode", "123");
 
         final var response =
-                restTemplate.exchange("http://localhost:" + port + "/v1/product/{productCode}", HttpMethod.PUT, productRequestHttpEntity, ErrorResponse.class, params);
+                restTemplate.exchange(getBaseURL() + "v1/product/{productCode}", HttpMethod.PUT, productRequestHttpEntity, ErrorResponse.class, params);
 
         final var errorResponse = response.getBody();
 
