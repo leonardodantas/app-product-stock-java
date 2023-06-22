@@ -7,3 +7,11 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
+  kafka:
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: com.product.stock.config.ProductSerializer
+    consumer:
+      group-id: product-stock
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: com.product.stock.config.ProductDeserializer
