@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatusCode;
-import testcontainersconfig.MONGODBTestContainerConfiguration;
+import testcontainersconfig.TestContainerConfiguration;
 import utils.GetMockJson;
 
 import java.util.HashMap;
@@ -19,7 +19,7 @@ import java.util.HashMap;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-public class UpdateProductIntegrationTest extends MONGODBTestContainerConfiguration {
+public class UpdateProductIntegrationTest extends TestContainerConfiguration {
 
     private static final String PRODUCT_CODE = "ABC123XYZ";
 

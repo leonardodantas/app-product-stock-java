@@ -6,14 +6,14 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatusCode;
-import testcontainersconfig.MONGODBTestContainerConfiguration;
+import testcontainersconfig.TestContainerConfiguration;
 import utils.GetMockJson;
 
 import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class FIndProductIntegrationTest extends MONGODBTestContainerConfiguration {
+public class FIndProductIntegrationTest extends TestContainerConfiguration {
 
     private static final String PRODUCT_CODE = "ABC123XYZ";
     private static final String PRODUCT_ID = "0690e3d6-0a4b-11ee-be56-0242ac120002";

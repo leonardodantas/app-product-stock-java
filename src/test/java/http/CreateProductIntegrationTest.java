@@ -10,12 +10,12 @@ import org.junit.jupiter.api.Test;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.http.HttpStatusCode;
-import testcontainersconfig.MONGODBTestContainerConfiguration;
+import testcontainersconfig.TestContainerConfiguration;
 import utils.GetMockJson;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class CreateProductIntegrationTest extends MONGODBTestContainerConfiguration {
+public class CreateProductIntegrationTest extends TestContainerConfiguration {
 
     @Test
     @Order(1)

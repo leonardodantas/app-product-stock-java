@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatusCode;
-import testcontainersconfig.MONGODBTestContainerConfiguration;
+import testcontainersconfig.TestContainerConfiguration;
 import utils.GetMockJson;
 
 import java.util.HashMap;
@@ -16,7 +16,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class RemoveProductIntegrationTest extends MONGODBTestContainerConfiguration {
+public class RemoveProductIntegrationTest extends TestContainerConfiguration {
 
     private static final String PRODUCT_CODE = "ABC123XYZ";
 
