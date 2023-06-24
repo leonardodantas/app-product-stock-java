@@ -60,6 +60,45 @@ são inseridas de forma dinamica durante a subida do container.
 
 ```
 
+### Exemplo de execução de teste
+
+<p>
+  O trecho de código a seguir apresenta um exemplo de teste integrado que utiliza a biblioteca TestContainer. Nesse teste, é realizado uma chamada REST utilizando a classe TestRestTemplate, onde é enviado um objeto de produto recuperado usando a classe GetMockJson. Durante a execução do teste, o produto é persistido no banco de dados MongoDB e também enviado para uma fila Kafka.
+
+O objetivo desse teste é verificar se o fluxo completo de salvamento do produto está funcionando corretamente, desde a persistência no banco de dados até o envio para o Kafka.
+</p>
+
+```
+    @Test
+    @Order(1)
+    @DisplayName(value = "Salvando um novo produto com sucesso")
+    public void shouldCreateProduct() {
+
+        final var request = GetMockJson.getObject("products/product_to_save_success_request", ProductCreateRequest.class);
+
+        final var response =
+                restTemplate.postForEntity(getBaseURL() + "v1/product", request, ProductResponse.class);
+
+        assertEquals(HttpStatusCode.valueOf(201), response.getStatusCode());
+
+        final var productResponse = response.getBody();
+
+        assertNotNull(productResponse.id(), "ID validado");
+        assertEquals(request.code().toUpperCase(), productResponse.code(), "Codigo validado em upperCase");
+        assertEquals(request.name(), productResponse.name(), "Nome validado");
+        assertEquals(request.description(), productResponse.description(), "Descrição validado");
+        assertEquals(request.price().compareTo(productResponse.price()), 0, "Preço validado");
+        assertEquals(3, request.details().size());
+
+        final var productExistInDataBase = mongoTemplate.exists(Query.query(Criteria.where("id")
+                .is(productResponse.id()).and("active").is(true)), ProductDocument.class);
+
+        assertTrue(productExistInDataBase, "Produto inserido na base de dados");
+
+        mongoTemplate.dropCollection("products");
+    }
+```
+
 ## Tecnologias
 
 <div style="display: inline_block">
