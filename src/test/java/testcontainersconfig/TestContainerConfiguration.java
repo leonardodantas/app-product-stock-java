@@ -26,7 +26,7 @@ import org.testcontainers.utility.DockerImageName;
 @ExtendWith(SpringExtension.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @SpringBootTest(classes = {Application.class}, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class MONGODBTestContainerConfiguration {
+public class TestContainerConfiguration {
 
     @LocalServerPort
     private int port;

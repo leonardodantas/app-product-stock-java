@@ -10,14 +10,14 @@ import org.junit.jupiter.api.Test;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
-import testcontainersconfig.MONGODBTestContainerConfiguration;
+import testcontainersconfig.TestContainerConfiguration;
 import utils.GetMockJson;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class FindAllProductsIntegrationTest extends MONGODBTestContainerConfiguration {
+public class FindAllProductsIntegrationTest extends TestContainerConfiguration {
 
     @Test
     @Order(1)
