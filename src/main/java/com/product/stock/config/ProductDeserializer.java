@@ -1,6 +1,7 @@
 package com.product.stock.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.product.stock.app.exceptions.DeserializerException;
 import com.product.stock.infra.kafka.jsons.ProductJson;
 import org.apache.kafka.common.serialization.Deserializer;
 
@@ -15,9 +16,7 @@ public class ProductDeserializer implements Deserializer<ProductJson> {
         try {
             return objectMapper.readValue(bytes, ProductJson.class);
         } catch (final IOException e) {
-            //TODO
-            //TRATAR EXCEPTION
-            return null;
+            throw new DeserializerException(String.format("Error deserializer ProductJson with topic %s", topic));
         }
     }
 }

@@ -1,6 +1,7 @@
 package com.product.stock.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.product.stock.app.exceptions.SerializerException;
 import com.product.stock.infra.kafka.jsons.ProductJson;
 import org.apache.kafka.common.serialization.Serializer;
 
@@ -15,9 +16,7 @@ public class ProductSerializer implements Serializer<ProductJson> {
         try {
             return objectMapper.writeValueAsBytes(productJson);
         } catch (final IOException e) {
-            //TODO
-            //TRATAR EXCEPTION
-            return null;
+            throw new SerializerException(String.format("Error serializer ProductJson with topic %s", topic));
         }
     }
 
