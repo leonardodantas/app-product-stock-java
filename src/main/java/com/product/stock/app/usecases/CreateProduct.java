@@ -1,7 +1,7 @@
 package com.product.stock.app.usecases;
 
 import com.product.stock.app.exceptions.DocumentAlreadyExistException;
-import com.product.stock.app.messaging.ISendMessage;
+import com.product.stock.app.messaging.ISendProduct;
 import com.product.stock.app.repositories.IProductRepository;
 import com.product.stock.domain.Product;
 import org.slf4j.Logger;
@@ -13,11 +13,11 @@ public class CreateProduct {
 
     private static final Logger logger = LoggerFactory.getLogger(CreateProduct.class);
     private final IProductRepository productRepository;
-    private final ISendMessage sendMessage;
+    private final ISendProduct sendProduct;
 
-    public CreateProduct(final IProductRepository productRepository, final ISendMessage sendMessage) {
+    public CreateProduct(final IProductRepository productRepository, final ISendProduct sendProduct) {
         this.productRepository = productRepository;
-        this.sendMessage = sendMessage;
+        this.sendProduct = sendProduct;
     }
 
     public Product execute(final Product product) {
@@ -25,7 +25,7 @@ public class CreateProduct {
         productRepository.findByCode(product.code()).ifPresent(productExist -> {
             throw new DocumentAlreadyExistException(String.format("Produto com codigo %s já cadastrado", product.code()));
         });
-        sendMessage.sendMessage(product);
+        sendProduct.sendProduct(product);
         return productRepository.save(product.activeProduct());
     }
 }

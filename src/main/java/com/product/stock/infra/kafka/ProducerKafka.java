@@ -1,6 +1,6 @@
 package com.product.stock.infra.kafka;
 
-import com.product.stock.app.messaging.ISendMessage;
+import com.product.stock.app.messaging.ISendProduct;
 import com.product.stock.domain.Product;
 import com.product.stock.infra.kafka.jsons.ProductJson;
 import org.slf4j.Logger;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import java.util.Objects;
 
 @Component
-public class ProducerKafka implements ISendMessage {
+public class ProducerKafka implements ISendProduct {
 
     private static final Logger logger = LoggerFactory.getLogger(ProducerKafka.class);
 
@@ -25,7 +25,7 @@ public class ProducerKafka implements ISendMessage {
     }
 
     @Override
-    public void sendMessage(final Product product) {
+    public void sendProduct(final Product product) {
         final var json = ProductJson.from(product);
         final var future = kafkaTemplate.send(topic, product.code(), json);
 
