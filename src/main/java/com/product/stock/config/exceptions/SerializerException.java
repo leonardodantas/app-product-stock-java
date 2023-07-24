@@ -1,4 +1,4 @@
-package com.product.stock.app.exceptions;
+package com.product.stock.config.exceptions;
 
 public class SerializerException extends RuntimeException {
 

@@ -1,7 +1,7 @@
-package com.product.stock.config;
+package com.product.stock.config.serializers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.product.stock.app.exceptions.SerializerException;
+import com.product.stock.config.exceptions.SerializerException;
 import com.product.stock.infra.kafka.jsons.ProductJson;
 import org.apache.kafka.common.serialization.Serializer;
 

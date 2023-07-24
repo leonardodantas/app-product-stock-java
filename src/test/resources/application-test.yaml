@@ -10,8 +10,8 @@ spring:
   kafka:
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: com.product.stock.config.ProductSerializer
+      value-serializer: com.product.stock.config.serializers.ProductSerializer
     consumer:
       group-id: product-stock
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: com.product.stock.config.ProductDeserializer
+      value-deserializer: com.product.stock.config.serializers.ProductDeserializer
