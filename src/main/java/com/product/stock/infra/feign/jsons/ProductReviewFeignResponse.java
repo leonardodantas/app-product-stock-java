@@ -1,4 +1,4 @@
-package com.product.stock.infra.feign;
+package com.product.stock.infra.feign.jsons;
 
 import java.util.List;
 

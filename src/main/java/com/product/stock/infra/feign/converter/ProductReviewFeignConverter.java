@@ -1,7 +1,9 @@
-package com.product.stock.infra.feign;
+package com.product.stock.infra.feign.converter;
 
 import com.product.stock.domain.ProductReview;
 import com.product.stock.domain.Review;
+import com.product.stock.infra.feign.jsons.ProductReviewFeignResponse;
+import com.product.stock.infra.feign.jsons.ReviewFeignResponse;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
