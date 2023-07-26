@@ -19,7 +19,7 @@ public class FindProductReviewsController {
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("product/{productId}")
     public PaginatedResult<ProductReviewResponse> findByProductId(@PathVariable final String productId) {
-        final var response = findProductReviews.findByProductId(productId);
+        final var response = findProductReviews.findReviewsByProductId(productId);
         return PaginatedResult.from(response.map(ProductReviewResponse::from));
     }
 }

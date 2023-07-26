@@ -26,5 +26,9 @@ spring:
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: com.product.stock.config.serializers.ProductDeserializer
 
+application:
+  code:
+    header: "APP-PRODUCT-STOCK-JAVA"
+
 url:
   review: http://localhost:8080/review
