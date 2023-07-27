@@ -5,5 +5,5 @@ import org.springframework.data.domain.Page;
 
 public interface IFindReviewRest {
 
-    Page<ProductReview> findByProductId(final String productId);
+    Page<ProductReview> findByProductId(final String productCode);
 }

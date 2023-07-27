@@ -21,6 +21,7 @@
         <google-code-gson>2.10.1</google-code-gson>
         <commons-collections4.version>4.4</commons-collections4.version>
         <spring-cloud-starter-openfeign.version>4.0.3</spring-cloud-starter-openfeign.version>
+        <wiremock.version>2.35.0</wiremock.version>
     </properties>
     <dependencies>
         <dependency>
@@ -117,6 +118,12 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
             <version>${spring-cloud-starter-openfeign.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.tomakehurst</groupId>
+            <artifactId>wiremock-standalone</artifactId>
+            <version>3.0.0-beta-8</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

@@ -17,8 +17,8 @@ public class FindProductReviews {
         this.findReviewRest = findReviewRest;
     }
 
-    public Page<ProductReview> findReviewsByProductId(final String productId) {
-        logger.info("Execute useCase FindProductReviews with productId: {}", productId);
-        return findReviewRest.findByProductId(productId);
+    public Page<ProductReview> findReviewsByProductId(final String productCode) {
+        logger.info("Execute useCase FindProductReviews with productId: {}", productCode);
+        return findReviewRest.findByProductId(productCode);
     }
 }

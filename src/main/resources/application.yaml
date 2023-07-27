@@ -31,4 +31,4 @@ application:
     header: "APP-PRODUCT-STOCK-JAVA"
 
 url:
-  review: http://localhost:8080/review
+  review: http://localhost:8081/review

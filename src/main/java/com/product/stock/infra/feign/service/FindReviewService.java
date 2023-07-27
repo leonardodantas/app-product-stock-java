@@ -19,8 +19,8 @@ public class FindReviewService implements IFindReviewRest {
     }
 
     @Override
-    public Page<ProductReview> findByProductId(final String productId) {
-        final var response = findReviewFeign.findByProductId(productId).getBody();
+    public Page<ProductReview> findByProductId(final String productCode) {
+        final var response = findReviewFeign.findByProductCode(productCode).getBody();
         return response.map(productReviewFeignConverter::convert);
     }
 }

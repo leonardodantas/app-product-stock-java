@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @FeignClient(name = "FindReviewFeign", url = "${url.review}", configuration = FeignConfig.class)
 public interface IFindReviewFeign {
 
-    @GetMapping("product/{productId}")
-    ResponseEntity<Page<ProductReviewFeignResponse>> findByProductId(final String productId);
+    @GetMapping("product/{productCode}")
+    ResponseEntity<Page<ProductReviewFeignResponse>> findByProductCode(final String productCode);
 }
