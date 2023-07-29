@@ -17,6 +17,10 @@ import static com.fasterxml.jackson.databind.SerializationFeature.WRITE_DATES_AS
 
 public final class GetMockJson {
 
+    private GetMockJson() {
+
+    }
+
     private static final ObjectMapper objectMapper = Jackson2ObjectMapperBuilder.json()
             .serializationInclusion(NON_NULL)
             .featuresToDisable(WRITE_DATES_AS_TIMESTAMPS)
@@ -30,6 +34,15 @@ public final class GetMockJson {
         } catch (final IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static String getStringAsJson(final String fileName) {
+        try {
+            return getJsonElements(fileName).toString();
+        } catch (final FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     public static <T> T getList(final String fileName, final TypeReference<T> typeReference) {

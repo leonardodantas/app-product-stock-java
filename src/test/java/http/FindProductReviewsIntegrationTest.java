@@ -1,7 +1,5 @@
 package http;
 
-import com.github.tomakehurst.wiremock.client.WireMock;
-import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo;
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 import com.product.stock.Application;
 import org.junit.jupiter.api.*;
@@ -13,12 +11,13 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpMethod;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import utils.GetMockJson;
 
 import java.util.HashMap;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 
-@WireMockTest(httpPort = 9080)
+@WireMockTest(httpPort = 8081)
 @ActiveProfiles("test")
 @ExtendWith(SpringExtension.class)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -30,12 +29,6 @@ public class FindProductReviewsIntegrationTest {
     @Autowired
     protected TestRestTemplate restTemplate;
 
-    @BeforeEach
-    public void init(WireMockRuntimeInfo wmRuntimeInfo) {
-        WireMock wireMock = wmRuntimeInfo.getWireMock();
-        wireMock.register(get("http://localhost:8081/review/product/" + "TES123TES").willReturn(ok()));
-    }
-
     @Test
     @Order(1)
     @DisplayName(value = "Buscando reviews de um produto atraves de seu codigo")
@@ -45,7 +38,9 @@ public class FindProductReviewsIntegrationTest {
         final var params = new HashMap<String, String>();
         params.put("productCode", productCode);
 
-        stubFor(get("http://localhost:8081/review/product/" + productCode).willReturn(ok()));
+        stubFor(get("/review/product/" + productCode).willReturn(aResponse()
+                .withStatus(200)
+                .withBody(GetMockJson.getStringAsJson("reviews/reviews_page_success"))));
 
         final var response =
                 restTemplate.exchange("http://localhost:" + port + "/" + "v1/reviews/product/{productCode}", HttpMethod.GET, null, String.class, params);
