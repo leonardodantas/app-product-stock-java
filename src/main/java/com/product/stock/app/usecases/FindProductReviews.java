@@ -4,7 +4,6 @@ import com.product.stock.app.rest.IFindReviewRest;
 import com.product.stock.domain.ProductReview;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,7 +16,7 @@ public class FindProductReviews {
         this.findReviewRest = findReviewRest;
     }
 
-    public Page<ProductReview> findReviewsByProductId(final String productCode) {
+    public ProductReview findReviewsByProductId(final String productCode) {
         logger.info("Execute useCase FindProductReviews with productId: {}", productCode);
         return findReviewRest.findByProductId(productCode);
     }

@@ -1,7 +1,6 @@
 package com.product.stock.infra.http.controllers;
 
 import com.product.stock.app.usecases.FindProductReviews;
-import com.product.stock.infra.http.jsons.response.PaginatedResult;
 import com.product.stock.infra.http.jsons.response.ProductReviewResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -18,8 +17,8 @@ public class FindProductReviewsController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("product/{productCode}")
-    public PaginatedResult<ProductReviewResponse> findByProductId(@PathVariable final String productCode) {
+    public ProductReviewResponse findByProductId(@PathVariable final String productCode) {
         final var response = findProductReviews.findReviewsByProductId(productCode);
-        return PaginatedResult.from(response.map(ProductReviewResponse::from));
+        return ProductReviewResponse.from(response);
     }
 }
