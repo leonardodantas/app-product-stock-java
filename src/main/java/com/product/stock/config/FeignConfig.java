@@ -1,8 +1,11 @@
 package com.product.stock.config;
 
+import feign.Logger;
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
+import feign.codec.ErrorDecoder;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.UUID;
@@ -23,5 +26,15 @@ public class FeignConfig implements RequestInterceptor {
     public void apply(final RequestTemplate requestTemplate) {
         requestTemplate.header(APP_CODE_HEADER, appCodeHeader);
         requestTemplate.header(UUID_HEADER, UUID.randomUUID().toString());
+    }
+
+    @Bean
+    Logger.Level feignLoggerLevel() {
+        return Logger.Level.FULL;
+    }
+
+    @Bean
+    public ErrorDecoder errorDecoder() {
+        return new CustomErrorDecode();
     }
 }

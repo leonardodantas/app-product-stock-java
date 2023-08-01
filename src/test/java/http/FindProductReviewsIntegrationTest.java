@@ -2,6 +2,7 @@ package http;
 
 import com.github.tomakehurst.wiremock.junit5.WireMockTest;
 import com.product.stock.Application;
+import com.product.stock.infra.http.jsons.response.ErrorResponse;
 import com.product.stock.infra.http.jsons.response.ProductReviewResponse;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -56,9 +57,37 @@ public class FindProductReviewsIntegrationTest {
         assertNotNull(body);
     }
 
-    /**
-     * TODO
-     * Validar envio do content-type json
-     * buscar o property de testes no lugar do principal
-     */
+    @Test
+    @Order(2)
+    @DisplayName(value = "Deve lançar ResponseFeignException")
+    public void shouldThrownResponseFeignException() {
+
+        final var productCode = "DRF594POK";
+        final var params = new HashMap<String, String>();
+        params.put("productCode", productCode);
+
+        final var response =
+                restTemplate.exchange("http://localhost:" + port + "/" + "v1/reviews/product/{productCode}", HttpMethod.GET, null, ErrorResponse.class, params);
+
+        assertEquals(HttpStatusCode.valueOf(400), response.getStatusCode());
+    }
+
+
+    @Test
+    @Order(3)
+    @DisplayName(value = "Deve lançar InternalServerFeignException")
+    public void shouldThrownInternalServerFeignException() {
+
+        final var productCode = "DRF594POK";
+        final var params = new HashMap<String, String>();
+        params.put("productCode", productCode);
+
+        stubFor(get("/review/product/" + productCode).willReturn(aResponse().withStatus(500)));
+
+        final var response =
+                restTemplate.exchange("http://localhost:" + port + "/" + "v1/reviews/product/{productCode}", HttpMethod.GET, null, ErrorResponse.class, params);
+
+        assertEquals(HttpStatusCode.valueOf(500), response.getStatusCode());
+    }
+
 }
