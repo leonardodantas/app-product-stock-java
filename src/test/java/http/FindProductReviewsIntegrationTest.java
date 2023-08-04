@@ -69,7 +69,10 @@ public class FindProductReviewsIntegrationTest {
         final var response =
                 restTemplate.exchange("http://localhost:" + port + "/" + "v1/reviews/product/{productCode}", HttpMethod.GET, null, ErrorResponse.class, params);
 
-        assertEquals(HttpStatusCode.valueOf(400), response.getStatusCode());
+        assertEquals(HttpStatusCode.valueOf(404), response.getStatusCode());
+
+        final var body = response.getBody();
+        assertEquals("ResponseFeignException", body.exception());
     }
 
 
@@ -88,6 +91,8 @@ public class FindProductReviewsIntegrationTest {
                 restTemplate.exchange("http://localhost:" + port + "/" + "v1/reviews/product/{productCode}", HttpMethod.GET, null, ErrorResponse.class, params);
 
         assertEquals(HttpStatusCode.valueOf(500), response.getStatusCode());
+        final var body = response.getBody();
+        assertEquals("InternalServerFeignException", body.exception());
     }
 
 }
