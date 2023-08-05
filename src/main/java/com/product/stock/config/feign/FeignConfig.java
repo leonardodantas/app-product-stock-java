@@ -1,4 +1,4 @@
-package com.product.stock.config;
+package com.product.stock.config.feign;
 
 import feign.Logger;
 import feign.RequestInterceptor;

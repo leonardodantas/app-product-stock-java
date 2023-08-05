@@ -1,6 +1,6 @@
 package com.product.stock.infra.feign.client;
 
-import com.product.stock.config.FeignConfig;
+import com.product.stock.config.feign.FeignConfig;
 import com.product.stock.infra.feign.jsons.ProductReviewFeignResponse;
 import feign.Headers;
 import org.springframework.cloud.openfeign.FeignClient;

@@ -1,4 +1,4 @@
-package com.product.stock.config;
+package com.product.stock.config.feign;
 
 import com.product.stock.infra.exceptions.InternalServerFeignException;
 import com.product.stock.infra.exceptions.ResponseFeignException;
