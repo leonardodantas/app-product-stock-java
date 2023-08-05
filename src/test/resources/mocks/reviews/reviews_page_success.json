@@ -1,0 +1,134 @@
+{
+  "id": "45987456213",
+  "code": "DRF594POK",
+  "name": "Televisão",
+  "description": "Televisão 50 polegadas",
+  "reviews": [
+    {
+      "id": "3e90f8e6-4b0b-4e33-b129-44d99e0c7e67",
+      "name": "João Silva",
+      "description": "Ótimo produto!",
+      "rating": 5,
+      "date": "2023-07-11T10:30:00"
+    },
+    {
+      "id": "a3a706e3-2353-4346-89a5-8b1d91621120",
+      "name": "Maria Souza",
+      "description": "Excelente produto!",
+      "rating": 4,
+      "date": "2023-07-10T15:45:00"
+    },
+    {
+      "id": "a587366d-63a7-452d-93ca-d3abf2c031b0",
+      "name": "Pedro Santos",
+      "description": "Produto muito bom!",
+      "rating": 4,
+      "date": "2023-07-09T09:15:00"
+    },
+    {
+      "id": "5ea0f1db-27cd-4cfd-ae10-d69d6d77a071",
+      "name": "Ana Lima",
+      "description": "Recomendo a todos!",
+      "rating": 5,
+      "date": "2023-07-08T20:20:00"
+    },
+    {
+      "id": "40c2e750-7bc2-4b38-a038-5f00ee2314ab",
+      "name": "Carlos Fernandes",
+      "description": "Ótimo custo-benefício!",
+      "rating": 4,
+      "date": "2023-07-07T14:00:00"
+    },
+    {
+      "id": "6b7d83f0-c557-4a2c-9d82-c1e2fb736a38",
+      "name": "Mariana Costa",
+      "description": "Satisfeita com a compra!",
+      "rating": 5,
+      "date": "2023-07-06T11:30:00"
+    },
+    {
+      "id": "2ac13a4a-1ce4-43ac-891d-0a674f4e8905",
+      "name": "Paulo Pereira",
+      "description": "Produto de alta qualidade!",
+      "rating": 5,
+      "date": "2023-07-05T18:45:00"
+    },
+    {
+      "id": "3c647fb9-c9c0-4aa3-8a1a-9a2032a86eaf",
+      "name": "Julia Mendes",
+      "description": "Entrega rápida e eficiente!",
+      "rating": 4,
+      "date": "2023-07-04T12:00:00"
+    },
+    {
+      "id": "6ee6d12e-6571-4154-8a35-10030170ad49",
+      "name": "Felipe Almeida",
+      "description": "Boa experiência de compra!",
+      "rating": 4,
+      "date": "2023-07-03T16:20:00"
+    },
+    {
+      "id": "38de305d-d2b6-4e60-b053-2c778d5b6db3",
+      "name": "Amanda Ferreira",
+      "description": "Gostei muito do produto!",
+      "rating": 5,
+      "date": "2023-07-02T08:10:00"
+    },
+    {
+      "id": "f294a446-8b82-432d-8a1e-bb866f4375db",
+      "name": "Rodrigo Oliveira",
+      "description": "Perfeito para o que eu precisava!",
+      "rating": 5,
+      "date": "2023-07-01T19:30:00"
+    },
+    {
+      "id": "c3a88c60-d1d7-43e2-9dc6-6258d02f1f98",
+      "name": "Camila Gomes",
+      "description": "Superou minhas expectativas!",
+      "rating": 5,
+      "date": "2023-06-30T22:55:00"
+    },
+    {
+      "id": "f0168c98-ba5b-4d71-b09e-ff2592c1c3d7",
+      "name": "Lucas Castro",
+      "description": "Muito bom atendimento!",
+      "rating": 4,
+      "date": "2023-06-29T13:40:00"
+    },
+    {
+      "id": "70a924bf-36a3-4da5-9a2f-9bf9c24b9340",
+      "name": "Letícia Sousa",
+      "description": "Adorei a compra!",
+      "rating": 5,
+      "date": "2023-06-28T17:00:00"
+    },
+    {
+      "id": "681282e5-d478-46f1-8377-2e6f724d6b71",
+      "name": "Gustavo Rocha",
+      "description": "Recomendo a todos!",
+      "rating": 5,
+      "date": "2023-06-27T09:25:00"
+    },
+    {
+      "id": "d4ab8455-071c-4389-8c15-33c9ac7f96eb",
+      "name": "Isabela Costa",
+      "description": "Qualidade excepcional!",
+      "rating": 5,
+      "date": "2023-06-26T14:15:00"
+    },
+    {
+      "id": "77108c7b-3fe4-43eb-83b8-5b6b6d1e641c",
+      "name": "Rafaela Lima",
+      "description": "Muito satisfeito com a compra!",
+      "rating": 4,
+      "date": "2023-06-25T16:50:00"
+    },
+    {
+      "id": "2a00a4d9-6e33-4f89-8ca2-b3d18c3de8b8",
+      "name": "Vinicius Alves",
+      "description": "Produto chegou antes do prazo!",
+      "rating": 4,
+      "date": "2023-06-24T11:00:00"
+    }
+  ]
+}

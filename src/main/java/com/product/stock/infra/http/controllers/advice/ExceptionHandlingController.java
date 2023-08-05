@@ -2,6 +2,8 @@ package com.product.stock.infra.http.controllers.advice;
 
 import com.product.stock.app.exceptions.DocumentAlreadyExistException;
 import com.product.stock.app.exceptions.ProductNotFoundException;
+import com.product.stock.infra.exceptions.InternalServerFeignException;
+import com.product.stock.infra.exceptions.ResponseFeignException;
 import com.product.stock.infra.exceptions.SaveObjectException;
 import com.product.stock.infra.http.jsons.response.ErrorResponse;
 import jakarta.servlet.http.HttpServletRequest;
@@ -51,6 +53,36 @@ public class ExceptionHandlingController {
                 .path(request.getRequestURI())
                 .status(HttpStatus.NOT_FOUND)
                 .exception(ProductNotFoundException.class.getSimpleName())
+                .build();
+
+        return new ResponseEntity<>(response, response.status());
+    }
+
+
+    @ExceptionHandler(InternalServerFeignException.class)
+    public ResponseEntity<ErrorResponse> handlerInternalServerFeignException(final InternalServerFeignException exception, final HttpServletRequest request) {
+
+        final var response = ErrorResponse.builder()
+                .message(exception.getMessage())
+                .error(exception.getLocalizedMessage())
+                .path(request.getRequestURI())
+                .status(HttpStatus.valueOf(exception.getHttpStatus()))
+                .exception(InternalServerFeignException.class.getSimpleName())
+                .build();
+
+        return new ResponseEntity<>(response, response.status());
+    }
+
+
+    @ExceptionHandler(ResponseFeignException.class)
+    public ResponseEntity<ErrorResponse> handlerResponseFeignException(final ResponseFeignException exception, final HttpServletRequest request) {
+
+        final var response = ErrorResponse.builder()
+                .message(exception.getMessage())
+                .error(exception.getLocalizedMessage())
+                .path(request.getRequestURI())
+                .status(HttpStatus.valueOf(exception.getHttpStatus()))
+                .exception(ResponseFeignException.class.getSimpleName())
                 .build();
 
         return new ResponseEntity<>(response, response.status());

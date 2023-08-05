@@ -2,7 +2,7 @@ package com.product.stock.app.messaging;
 
 import com.product.stock.domain.Product;
 
-public interface ISendMessage {
+public interface ISendProduct {
 
-    void sendMessage(final Product product);
+    void sendProduct(final Product product);
 }
